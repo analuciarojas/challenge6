@@ -3,8 +3,8 @@
 }
 
 :root{
-    --grey:grey;
-    --lightgrey:rgb(189, 186, 186);
+    --grey:rgb(167, 164, 164);
+    --lightgrey:rgb(236, 232, 232);
 }
 
 .gradient-custom {  
@@ -16,7 +16,10 @@
 .container{
     padding-top: 3%;
     width:30%;
-    padding-left: 5%;
+    padding-left: 3%;
+    padding-right: 3%;
+    background-color: rgb(237, 241, 248);
+    padding-bottom: 100%;
 }
 
 .row{
@@ -33,7 +36,7 @@
 }
 
 #search-city{
-    background-color: var(--grey);
+    background: linear-gradient(to right, rgba(89, 137, 232, 1), rgba(0, 9, 36, 1));
     border-radius: 8px;
     color:white;
     padding: 8px 40px;
@@ -41,11 +44,17 @@
     width: 100%;
 }
 
-#search-city:hover {
-    background-color: var(--lightgrey);
-}
-
 .city-form{
     width: 100%;
 
+}
+
+#hr hr{
+    border-width: 1px;
+    width:100%;
+    border-color: var(--grey);
+}
+
+#city-list button:hover{
+    background-color: var(--lightgrey);
 }
