@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@600&display=swap" rel="stylesheet">   
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <title>Weather Dashboard</title>
+  </head>
+
+  <body>
+    <header class="display-3 text-center gradient-custom text-white">
+      <h1 class="display-3">Weather Dashboard</h1>
+      <p id="currentDay" class="lead"></p>
+    </header>
+
+    <div class="container float-left">
+        <div class="row">
+            <h3>Search for a City: </h3>
+        </div>
+        <div class="row">
+            <span class="city-form"><input placeholder="Enter a city" id="city"></span>
+        </div>
+        <div class="row">
+            <button type="button" id="search-city" class="search-city-btn btn-style-main">Search</button>
+        </div>
+
+    
+    </div>
+
+     
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
