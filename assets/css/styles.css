@@ -84,3 +84,11 @@
 .row h2{
     padding-bottom: 2%;
 }
+
+#c{
+    background-color: rgb(2, 2, 78);
+}
+
+.row{
+    flex-wrap: wrap;
+}

@@ -40,10 +40,10 @@
     </div>
     </div>
 
-<div class="container5" >
+<div class="container5" id="block" >
     <div class="container2 float-right">
       <div class="row">
-          <h2>Los Angeles (11/08/2021)</h2>
+          <h2 id="currentCity"></h2> <h2> (</h2><h2 id="date"></h2><h2>)</h2>
       </div>
       <div class="row">
           <p>Temperature: 55 F</p>
@@ -58,47 +58,47 @@
       <p>UV Index: 3.77</p>
     </div>
   </div>
-  <div class="container3 float-right">
+  <div class="container3 float-right" style="margin-right: 2%;">
     <div class="row">
       <h2>5-Day Forecast:</h2>
     </div>
-    <div class="row pad">
-      <div class="card" style="width: 17rem;">
+    <div class="row pad" style="flex-wrap: wrap;">
+      <div class="card text-white" style="width: 17%; margin-right: 2%;" id="c">
         <div class="card-body">
-            <h2>11/08/2021</h2>
+            <h2 id="date1"></h2>
             <p class="card-text">Temperature: 57 F</p>
             <p class="card-text">Wind: 9.54 MPH</p>
             <p class="card-text">Humidity: 84%</p>
           </div>
       </div>
-      <div class="card" style="width: 17rem;">
+      <div class="card text-white" style="width: 17%; margin-right: 2%;" id="c">
         <div class="card-body">
-            <h2>11/08/2021</h2>
-            <p class="card-text">Temperature: 57 F</p>
+          <h2 id="date2"></h2>
+          <p class="card-text">Temperature: 57 F</p>
             <p class="card-text">Wind: 9.54 MPH</p>
             <p class="card-text">Humidity: 84%</p>
           </div>
       </div>
-      <div class="card" style="width: 17rem;">
+      <div class="card text-white" style="width: 17%; margin-right: 2%;" id="c">
         <div class="card-body">
-            <h2>11/08/2021</h2>
-            <p class="card-text">Temperature: 57 F</p>
+          <h2 id="date3"></h2>
+          <p class="card-text">Temperature: 57 F</p>
             <p class="card-text">Wind: 9.54 MPH</p>
             <p class="card-text">Humidity: 84%</p>
           </div>
       </div>
-      <div class="card" style="width: 17rem;">
+      <div class="card text-white" style="width: 17%; margin-right: 2%;" id="c">
         <div class="card-body">
-            <h2>11/08/2021</h2>
-            <p class="card-text">Temperature: 57 F</p>
+          <h2 id="date4"></h2>
+          <p class="card-text">Temperature: 57 F</p>
             <p class="card-text">Wind: 9.54 MPH</p>
             <p class="card-text">Humidity: 84%</p>
           </div>
       </div>
-      <div class="card" style="width: 17rem;">
+      <div class="card text-white" style="width: 17%; margin-right: 2%;" id="c">
         <div class="card-body">
-            <h2>11/08/2021</h2>
-            <p class="card-text">Temperature: 57 F</p>
+          <h2 id="date5"></h2>
+          <p class="card-text">Temperature: 57 F</p>
             <p class="card-text">Wind: 9.54 MPH</p>
             <p class="card-text">Humidity: 84%</p>
           </div>
@@ -107,10 +107,6 @@
     </div>
 </div>
 
-
-
-
-     
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
