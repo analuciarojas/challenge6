@@ -36,7 +36,8 @@
 
 .container3{
     width:65%;
-    margin-left: 0px;
+    margin-right: 0px;
+
 }
 
 .container4 .row{
@@ -80,6 +81,6 @@
     background-color: var(--lightgrey);
 }
 
-.col{
-    background-color: navy;
+.row h2{
+    padding-bottom: 2%;
 }
