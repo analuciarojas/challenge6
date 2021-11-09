@@ -71,8 +71,49 @@ function getWeather(cityname){
         dayWind.text("Wind: "+ response.wind.speed + " MPH");
         var CoordLon = response.coord.lon;
         var CoordLat = response.coord.lat;
-    })
 
+    var URL2 = "https://api.openweathermap.org/data/2.5/uvi?appid="+ key+ "&lat=" + CoordLat +"&lon=" + CoordLon;
+    $.ajax({
+        url: URL2,
+        method: "GET"
+    }).then(function(responseuv) {
+        dayUV.text("UV Index: "+ responseuv.value );
+
+        if(responseuv.value > 0 && responseuv.value <=2){
+            dayUV.attr("class","green")
+        }
+        else if (responseuv.value > 2 && responseuv.value <= 5){
+            dayUV.attr("class","yellow")
+        }
+        else if (responseuv.value >5 && responseuv.value <= 7){
+            dayUV.attr("class","orange")
+        }
+        else if (responseuv.value >7 && responseuv.value <= 10){
+            dayUV.attr("class","red")
+        }
+        else{
+            dayUV.attr("class","purple")
+        }
+        
+    });
+})
+
+var URL3 = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityname + "&appid=" + key;
+            $.ajax({
+            url: URL3,
+            method: "GET"
+        }).then(function(response3) { 
+
+            for(i=0;i<5;i++)
+            {
+                var iconid = response3.list[i].weather[0].icon;
+                var iconurl = "http://openweathermap.org/img/w/" + iconid + ".png";
+                $("#icon"+(i+1)).attr('src', iconurl);
+                $("#temp"+(i+1)).text("Temp: "+(parseInt((response3.list[i].main.temp)* 9/5 - 459))+"° F");
+                $("#wind"+(i+1)).text("Wind: "+ response3.list[i].wind.speed + " MPH");
+                $("#hum"+(i+1)).text("Humidity: "+ response3.list[i].main.humidity + " %");
+            }
+    });
 
 }
 

@@ -92,3 +92,33 @@
 .row{
     flex-wrap: wrap;
 }
+
+#date1, #date2, #date3, #date4, #date5{
+    font-size:29px;
+}
+
+.card-body{
+    padding-left:8%;
+}
+
+.green{
+    background-color: green;
+    padding:.5%;
+  }
+  .yellow{
+    background-color: yellow;
+    padding:.5%;
+  }
+  .orange{
+    background-color: orange;
+    padding:.5%;
+  }
+  .red{
+    background-color: red;
+    padding:.5%;
+  }
+  
+  .purple{
+    background-color: purple;
+    padding:.5%;
+  }
