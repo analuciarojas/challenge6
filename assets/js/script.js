@@ -1,5 +1,4 @@
 var currentDay=document.querySelector("#currentDay");
-var date=document.querySelector("#date");
 var date1=document.querySelector("#date1");
 var date2=document.querySelector("#date2");
 var date3=document.querySelector("#date3");
@@ -8,8 +7,13 @@ var date5=document.querySelector("#date5");
 var cityArray = [];
 var cityList =$("#city-list");
 var line=$("#hr");
-var key = "045a878e40a6f6119f71f789e2cb5082";
-var cityname=$("#currentCity");
+var key = "f193accace7604fc0fa8203f8ac5955d";
+var Cityn=$("#currentCity");
+var dayTemp=$("#dayTemp");
+var dayHum=$("#dayHum");
+var dayWind=$("#dayWind");
+var dayUV=$("#dayUV");
+
 var block=document.querySelector("#block");
 
 
@@ -27,7 +31,6 @@ function saveCity(){
 }
 
 function dates(){
-    date.innerHTML = moment().format('L');
     date1.innerHTML =moment().add(1, 'days').format('L');
     date2.innerHTML =moment().add(2, 'days').format('L');
     date3.innerHTML =moment().add(3, 'days').format('L');
@@ -49,28 +52,30 @@ function displayCity(){
     
 }
 
-function cityName(c){
-    cityname.text(c);
-}
-
 
 function getWeather(cityname){
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" +cityname+ "&appid=" + key; 
+    var URL = "https://api.openweathermap.org/data/2.5/weather?q=" +cityname+ "&appid=" + key; 
 
+    
     $.ajax({
-      url: queryURL,
+      url: URL,
       method: "GET"
     }).then(function(response) {
 
-        var getCurrentWeatherIcon = response.weather[0].icon;
-        var displayCurrentWeatherIcon = $("<img src = http://openweathermap.org/img/wn/" + getCurrentWeatherIcon + "@2x.png />");
-
-
-
+        var iconid=response.weather[0].icon;
+        var iconurl = "http://openweathermap.org/img/w/" + iconid + ".png";
+        $('#wicon').attr('src', iconurl);
+        Cityn.text(response.name + "  (" + (moment().format('L'))+ ")  ");
+        dayTemp.text("Temperature: "+(parseInt((response.main.temp)* 9/5 - 459))+" °F");
+        dayHum.text("Humidity: "+ response.main.humidity + " %");
+        dayWind.text("Wind: "+ response.wind.speed + " MPH");
+        var CoordLon = response.coord.lon;
+        var CoordLat = response.coord.lat;
     })
 
 
 }
+
 
 $("#city").on("keyup", function(event) {
     if (event.keyCode === 13) {
@@ -93,7 +98,6 @@ $("#city").on("keyup", function(event) {
         cityArray.push(city);
     }
     dates();
-    cityName(city);
     saveCity();
     displayCity();
     getWeather(city);
