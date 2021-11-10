@@ -13,7 +13,7 @@ var dayTemp=$("#dayTemp");
 var dayHum=$("#dayHum");
 var dayWind=$("#dayWind");
 var dayUV=$("#dayUV");
-
+var listClick=document.querySelectorAll(".list-group-item");
 var block=document.querySelector("#block");
 
 
@@ -26,8 +26,12 @@ setInterval(function () {
      );
    },1000);
 
-function saveCity(){
+function saveCity(city){
+    if (city !== "") {
+        cityArray.push(city);
+    }
     localStorage.setItem("cities", JSON.stringify(cityArray));
+    displayCity();
 }
 
 function dates(){
@@ -46,12 +50,12 @@ function displayCity(){
       
       var button = $("<button>").text(city);
       button.attr("class", "list-group-item", "list-group-item active");
+      button.attr("id", city);
       button.attr("aria-current", "true");
       cityList.prepend(button);
     }
     
 }
-
 
 function getWeather(cityname){
     var URL = "https://api.openweathermap.org/data/2.5/weather?q=" +cityname+ "&appid=" + key; 
@@ -96,6 +100,27 @@ function getWeather(cityname){
         }
         
     });
+
+    var name=response.name;
+
+    if(cityArray.length===0){
+        saveCity(name);
+    }
+
+    for(i=0;i<((cityArray.length)+1);i++){
+        console.log(cityArray[i],name);
+        console.log(i,cityArray.length);
+
+
+        if(name===cityArray[i]){
+            var yes=1;
+        }
+    }
+
+    if(yes!==1){
+        saveCity(name);
+    }
+
 })
 
 var URL3 = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityname + "&appid=" + key;
@@ -118,6 +143,13 @@ var URL3 = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityname + "&
 }
 
 
+$(document).on('click', '.list-group-item', function (event) {
+    var city=event.target.id;
+    getWeather(city);
+
+});
+
+
 $("#city").on("keyup", function(event) {
     if (event.keyCode === 13) {
       event.preventDefault();
@@ -134,12 +166,9 @@ $("#city").on("keyup", function(event) {
     if(cityArray.length===0){
         var hr = $("<hr>");
         line.prepend(hr);
-    }
-    if (city !== "") {
-        cityArray.push(city);
-    }
+    }    
     dates();
-    saveCity();
-    displayCity();
     getWeather(city);
 });
+
+
