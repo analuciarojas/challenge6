@@ -6,6 +6,8 @@ var date4=document.querySelector("#date4");
 var date5=document.querySelector("#date5");
 var cityArray = [];
 var cityList =$("#city-list");
+var skip =$("#skipline");
+var card =$("#a");
 var line=$("#hr");
 var key = "f193accace7604fc0fa8203f8ac5955d";
 var Cityn=$("#currentCity");
@@ -19,6 +21,34 @@ var block=document.querySelector("#block");
 
 block.style.display = "none";
 
+  $(window).resize(function() {
+
+    var mediaQuery = window.matchMedia('(max-width: 1404px)');
+
+    if (mediaQuery.matches) {
+
+        skip.attr("class", "w-100");
+
+        for(i=0;i<5;i++){
+            var card =$("#"+i);
+            card.attr("class", "new-width","card");
+        }
+
+    }
+
+    var mediaQuery = window.matchMedia('(min-width: 1404px)');
+
+    if (mediaQuery.matches) {
+
+        skip.removeClass("w-100");
+
+        for(i=0;i<5;i++){
+            var card =$("#"+i);
+            card.attr("class", "old-width","card");
+        }
+
+    }
+  });
 
 setInterval(function () {
     currentDay.innerHTML = moment().format(
@@ -58,6 +88,7 @@ function displayCity(){
 }
 
 function getWeather(cityname){
+
     var URL = "https://api.openweathermap.org/data/2.5/weather?q=" +cityname+ "&appid=" + key; 
 
     
@@ -108,9 +139,6 @@ function getWeather(cityname){
     }
 
     for(i=0;i<((cityArray.length)+1);i++){
-        console.log(cityArray[i],name);
-        console.log(i,cityArray.length);
-
 
         if(name===cityArray[i]){
             var yes=1;
@@ -120,6 +148,8 @@ function getWeather(cityname){
     if(yes!==1){
         saveCity(name);
     }
+    block.style.display = "block";
+
 
 })
 
@@ -158,8 +188,6 @@ $("#city").on("keyup", function(event) {
   });
 
  $("#search-city").on("click", function(){
-    block.style.display = "block";
-
     var hr = document.createElement("HR");
     var city = $("#city").val().trim();
 

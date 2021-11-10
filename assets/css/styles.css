@@ -85,9 +85,21 @@
     padding-bottom: 2%;
 }
 
-#c{
+.new-width{
+    width:30%;
+    margin-right: 2%;
+    margin-bottom: 2%;
     background-color: rgb(2, 2, 78);
+    color:white; 
 }
+
+.old-width{
+    width:18%;
+    margin-right: 2%;
+    background-color: rgb(2, 2, 78);
+    color:white; 
+}
+
 
 .row{
     flex-wrap: wrap;
