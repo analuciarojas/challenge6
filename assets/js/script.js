@@ -21,6 +21,7 @@ var block=document.querySelector("#block");
 
 block.style.display = "none";
 
+// 5 day forecast media querie function 
   $(window).resize(function() {
 
     var mediaQuery = window.matchMedia('(max-width: 1404px)');
@@ -50,11 +51,15 @@ block.style.display = "none";
     }
   });
 
+// Time and date function 
+
 setInterval(function () {
     currentDay.innerHTML = moment().format(
        "dddd, MMM Do, h:mm:ss a"
      );
    },1000);
+
+// Save city name to local storage
 
 function saveCity(city){
     if (city !== "") {
@@ -64,6 +69,8 @@ function saveCity(city){
     displayCity();
 }
 
+// Add corresponding dates to 5 day forecast
+
 function dates(){
     date1.innerHTML =moment().add(1, 'days').format('L');
     date2.innerHTML =moment().add(2, 'days').format('L');
@@ -71,6 +78,8 @@ function dates(){
     date4.innerHTML =moment().add(4, 'days').format('L');
     date5.innerHTML =moment().add(5, 'days').format('L');
 }
+
+// Display city name, and create a list of buttons
 
 function displayCity(){
     cityList.empty();
@@ -86,6 +95,8 @@ function displayCity(){
     }
     
 }
+
+// Get API information for current weather, 5 day forecast and UV Index 
 
 function getWeather(cityname){
 
@@ -172,6 +183,7 @@ var URL3 = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityname + "&
 
 }
 
+// Make sure when list button is clicked weather shows up
 
 $(document).on('click', '.list-group-item', function (event) {
     var city=event.target.id;
@@ -179,6 +191,7 @@ $(document).on('click', '.list-group-item', function (event) {
 
 });
 
+// Make sure when the enter key is hit while typing a city the website runs as if clicked on 
 
 $("#city").on("keyup", function(event) {
     if (event.keyCode === 13) {
@@ -186,6 +199,8 @@ $("#city").on("keyup", function(event) {
       $("#search-city").click();
     }
   });
+
+// Create hr element to separate input from list and call for the first function when the search button is clicked 
 
  $("#search-city").on("click", function(){
     var hr = document.createElement("HR");
